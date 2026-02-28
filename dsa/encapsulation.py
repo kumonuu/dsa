@@ -32,7 +32,6 @@ class User:
     def get_password(self):
         return self.__password
 
-
 user = User("Alex","helloimalex@gmail.com")
 print(user.get_password())
 user.set_password()
