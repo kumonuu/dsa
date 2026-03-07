@@ -39,3 +39,24 @@ def recursive_exponentiation(num1,num2):
     return num1 * recursive_exponentiation(num1,num2-1)
     
 print(recursive_exponentiation(3,2))
+
+def fib(n):
+    if n <= 1:
+        return n
+    else:
+        return fib(n-1) + fib(n-2)
+
+print(fib(10))
+
+def fib_sequence(n):
+    num1 = 1
+    num2 = 1
+    print(num1)
+    print(num2)
+    for i in range(n-2):
+        num3 = num1 + num2
+        num1 = num2
+        num2 = num3
+        print(num3)
+        
+fib_sequence(10)
