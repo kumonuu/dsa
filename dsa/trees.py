@@ -2,6 +2,7 @@ class Node:
     def __init__(self,data):
         self.data = data
         self.children = []
+        self.parent = None
     def display(self,level):
         print(level*"   "+self.data)
 
@@ -10,6 +11,20 @@ class Node:
                 child.display(level+1)
     def add_child(self,child): 
         self.children.append(child)
+        child.parent = self
+    def delete(self):
+        parent = self.parent
+        parent.children.remove(self)
+        
+        for child in self.children:
+            child.parent = parent
+            parent.children.append(child)
+        self.children = []
+        self.parent = None
+        
+
+
+
 
 electronics = Node("Electronics")
 
@@ -33,5 +48,10 @@ electronics.add_child(laptop)
 
 macos = Node("MacOS")
 laptop.add_child(macos)
+
+electronics.display(0)
+
+macos.delete()
+phone.delete()
 
 electronics.display(0)
