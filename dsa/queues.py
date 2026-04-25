@@ -7,7 +7,7 @@ class Queue:
     def enqueue(self,item):
         self.my_list.append(item)
     def dequeue(self):
-        self.my_list.pop(0)
+        return self.my_list.pop(0)
     def front(self):
         return self.my_list[0]
     def rear(self):
