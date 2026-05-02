@@ -23,13 +23,6 @@ def push(item):
 def pop():
     return queue.my_list.pop(-1)
         
-push(1)
-push(2)
-push(3)
-print(queue.my_list)
-pop()
-print(queue.my_list)
-
 # print(stack.my_list)
 # print(stack.top())
 

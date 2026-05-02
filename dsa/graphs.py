@@ -1,4 +1,5 @@
 from queues import Queue
+from stacks import Stack
 
 graph = {
     "A": ["B","C","D"],
@@ -24,13 +25,13 @@ def bfs(start):
                 queue.enqueue(item)
             visited.add(item)
 
-def has_path(graph,start,end):
+def bfs_has_path(graph,start,end):
     if start == end:
         return True
 
     visited = set([])
-    queue = Queue()
-    queue.enqueue(start)
+    stack = Stack()
+    stack.push(start)
     visited.add(start)
 
     while queue.my_list:
@@ -43,13 +44,39 @@ def has_path(graph,start,end):
                 queue.enqueue(item)
     return False
 
-bfs("A")
+def dfs(start):
+    visited = set([])
+    stack = Stack()
 
-print(has_path(graph,"B","E"))
-print(has_path(graph,"A","F"))
-        
+    stack.push(start)
+    visited.add(start)
 
-        
-        
+    while stack.my_list:
+        key = stack.pop()
+        print(key)
+        for item in graph[key]:
+            if item not in visited:
+                stack.push(item)
+            visited.add(item)
 
+def dfs_has_path(graph,start,end):
+    if start == end:
+        return True
+    
+    visited = set([])
+    stack = Stack()
+    stack.push(start)
+    visited.add(start)
 
+    while stack.my_list:
+        key = stack.pop()
+        for item in graph[key]:
+            if item == end:
+                return True
+            if item not in visited:
+                visited.add(item)
+                stack.push(item)
+    return False
+
+print(dfs_has_path(graph,"B","E"))
+print(dfs_has_path(graph,"B","F"))
