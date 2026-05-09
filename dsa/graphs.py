@@ -78,5 +78,28 @@ def dfs_has_path(graph,start,end):
                 stack.push(item)
     return False
 
-print(dfs_has_path(graph,"B","E"))
-print(dfs_has_path(graph,"B","F"))
+def dfs_find_path(graph,start,end):
+    if start == end:
+        print(start)
+        return True
+    
+    visited = set([])
+    stack = Stack()
+    stack.push(start)
+    visited.add(start)
+
+    while stack.my_list:
+        key = stack.pop()
+        print(key)
+        for item in graph[key]:
+            if item == end:
+                print(item)
+                print("Target Found")
+                return True
+            if item not in visited:
+                visited.add(item)
+                stack.push(item)
+    print("Target not Found")
+    return False
+
+dfs_find_path(graph,"A","F")
